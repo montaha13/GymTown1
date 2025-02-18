@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterProduitController">
+   <children>
+      <TextField fx:id="nombreTF" layoutX="36.0" layoutY="31.0" promptText="nombre" />
+      <TextField fx:id="localisationTF" layoutX="37.0" layoutY="72.0" />
+      <TextField fx:id="telephoneTF" layoutX="38.0" layoutY="112.0" />
+      <TextField fx:id="mailTF" layoutX="36.0" layoutY="148.0" />
+      <TextField fx:id="dateTF" layoutX="335.0" layoutY="31.0" />
+      <TextField fx:id="prixTF" layoutX="336.0" layoutY="72.0" />
+      <TextField fx:id="totalTF" layoutX="336.0" layoutY="112.0" />
+      <TextField fx:id="statutTF" layoutX="336.0" layoutY="148.0" />
+   </children>
+</AnchorPane>
