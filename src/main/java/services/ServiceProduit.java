@@ -112,8 +112,15 @@ public class ServiceProduit implements IService<Produit> {
                 Integer prix = rs.getInt("prix");
                 String categorie = rs.getString("categorie");
 
-                // Création du produit à partir des données de la base
+
+
                 Produit produit = new Produit(id, photo, description, nom, ref, quantite, prix, categorie);
+
+                produits.add(produit);
+                // Charger les produits associés à la catégorie
+
+                // Création du produit à partir des données de la base
+
 
                 // Ajout du produit à la liste
                 produits.add(produit);
@@ -123,4 +130,5 @@ public class ServiceProduit implements IService<Produit> {
         }
         return produits;
     }
+
 }
