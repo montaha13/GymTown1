@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherEvenementTable">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <children>
+        <VBox spacing="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <!-- Titre -->
+                <Text fx:id="listTitle" text="Liste des événements" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-fill: #8e44ad;"/>
+
+
+                <!-- TableView avec styles intégrés -->
+                <TableView fx:id="tableView" prefHeight="450.0" style="-fx-background-color: white; -fx-border-color: #8e44ad; -fx-border-width: 2px; -fx-border-radius: 10; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+                    <columns>
+                        <TableColumn fx:id="nomColumn" prefWidth="120.0" text="Nom"/>
+                        <TableColumn fx:id="localisationColumn" prefWidth="120.0" text="Localisation"/>
+                        <TableColumn fx:id="photoColumn" prefWidth="120.0" text="Photo"/>
+                        <TableColumn fx:id="descriptionColumn" prefWidth="150.0" text="Description"/>
+                        <TableColumn fx:id="dateDebutColumn" prefWidth="100.0" text="Date Début"/>
+                        <TableColumn fx:id="dateFinColumn" prefWidth="100.0" text="Date Fin"/>
+                        <TableColumn fx:id="fraisColumn" prefWidth="80.0" text="Frais"/>
+                        <TableColumn fx:id="statutColumn" prefWidth="80.0" text="Statut"/>
+                        <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Actions"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

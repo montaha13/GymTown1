@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package services;
 
 import models.Categorie;
@@ -16,3 +17,18 @@ public interface IService<T> {
     List<Produit> readAllProduits() throws SQLException;
 
 }
+=======
+package services;
+
+import Models.Statut;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public interface IService<T> {
+    void ajouter(T t) throws SQLException;
+    void supprimer ( int id ) throws SQLException ;
+    void modifier(T t) throws SQLException;
+    List<T> recuperer() throws SQLException;
+}
+>>>>>>> Stashed changes
