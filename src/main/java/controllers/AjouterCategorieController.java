@@ -3,6 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -37,24 +38,27 @@ public class AjouterCategorieController {
             // Afficher un message de succès
             afficherMessage(Alert.AlertType.INFORMATION, "Succès", "Catégorie ajoutée avec succès !");
 
-            // Charger la fenêtre AfficherCategorie.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCategorie.fxml"));
+            // Charger la fenêtre ListeCategorie.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListeCategorie.fxml"));
             try {
                 Parent root = loader.load();
-                AfficherCategorieController ac = loader.getController();
-                ac.setRcategorie(categorieNom);
-                ac.setRlist(sc.readAll().toString());
-                categorieTF.getScene().setRoot(root);
+                ListeCategorieController controller = loader.getController();
+                controller.loadCategories(); // Recharger les catégories après l'ajout
+
+                // Changer la scène actuelle
+                Stage stage = (Stage) categorieTF.getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
 
-
-            // Changer la scène actuelle
-
         } catch (SQLException e) {
             afficherMessage(Alert.AlertType.ERROR, "Erreur SQL", e.getMessage());
-        } }
+        }
+    }
 
     /**
      * Méthode utilitaire pour afficher des alertes.
@@ -69,5 +73,27 @@ public class AjouterCategorieController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    @FXML
+    private void annulercategorie(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de AjouterProduit.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListeProduit.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène avec le FXML chargé
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle avec la nouvelle scène
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
     }
 }

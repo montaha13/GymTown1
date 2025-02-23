@@ -1,6 +1,7 @@
 package models;
 
 
+import java.io.File;
 
 public class Produit {
 
@@ -30,6 +31,12 @@ public class Produit {
     public Produit(int id, String photo, String description, String nom, String ref, Integer quantite, Integer prix, String categorie) {
     }
 
+    public Produit(int id, String photo, String nom, String description, String ref, float prix, int quantite, CategorieEnum categorie) {
+    }
+
+    public Produit(int id, String photo, String description, String nom, String ref, String quantite, String prix, String categorie) {
+    }
+
     public int getId() {
         return id;
     }
@@ -38,7 +45,7 @@ public class Produit {
         this.id = id;
     }
 
-    public float getPrix() {
+    public Float getPrix() {
         return this.prix;
     }
 
@@ -46,7 +53,7 @@ public class Produit {
         this.prix = prix;
     }
 
-    public int getQuantite() {
+    public Integer getQuantite() {
         return this.quantite;
     }
 
@@ -94,19 +101,18 @@ public class Produit {
         this.categorie = categorie;
     }
 
-
-
-    public Produit(int id, float prix, int quantite, String ref, String nom, String description, String photo  , CategorieEnum categorie) {
+    public Produit(int id, String photo, String description, String nom, String ref, int quantite, int prix, String categorie) {
         this.id = id;
-        this.prix = prix;
-        this.quantite = quantite;
-        this.ref = ref;
-        this.nom = nom;
-        this.description = description;
         this.photo = photo;
-
-        this.categorie = categorie;
+        this.description = description;
+        this.nom = nom;
+        this.ref = ref;
+        this.quantite = quantite;
+        this.prix = prix;
+        this.categorie = CategorieEnum.valueOf(categorie.toUpperCase());
     }
+
+
 
     @Override
     public String toString() {

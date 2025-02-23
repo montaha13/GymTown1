@@ -28,6 +28,9 @@ public class Categorie {
     public Categorie(CategorieEnum categorieEnum) {
     }
 
+    public Categorie(int id, String photo, String description, String nom, String ref, Integer quantite, Integer prix, CategorieEnum categorie) {
+    }
+
     // Méthode statique pour récupérer une instance de Categorie par nom
     public static Categorie valueOf(String categorieNom) {
         // Logique pour récupérer la catégorie depuis la base de données
@@ -136,5 +139,14 @@ public class Categorie {
     }
 
 
+    public String getCategorie() {
+        return "";
+    }
 
+    public void setCategorie(String nouvelleCategorie) {
+    }
+
+    public Object getSource() {
+        return null;
+    }
 }

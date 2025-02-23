@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AffProduitController">
+
+    <children>
+        <!-- Titre -->
+        <Text layoutX="200.0" layoutY="30.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Liste des Produits" />
+
+        <!-- Zone pour afficher les produits -->
+        <FlowPane fx:id="productContainer" layoutX="30.0" layoutY="60.0" prefWidth="540.0" prefHeight="350.0"
+                  hgap="15" vgap="15" style="-fx-padding: 10;">
+            <!-- Exemple d'un produit avec ImageView pour afficher l'image -->
+         <!--   <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 10; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.5, 0, 2);">
+
+                <ImageView fx:id="productImageView" fitHeight="112.0" fitWidth="150.0" preserveRatio="true" />
+                <Text fx:id="productName" text="Nom :" style="-fx-font-size: 14; -fx-font-weight: bold;" />
+                <Text fx:id="productPrice" text="Prix :" style="-fx-font-size: 14; -fx-font-weight: bold;" />
+                <Button fx:id="productDetailsButton" text="Voir Détails" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-background-radius: 5;"  />
+            </VBox> -->
+        </FlowPane>
+
+        <!-- Boutons -->
+        <Button fx:id="btnListeCategories" layoutX="26.0" layoutY="21.0" onAction="#listeCategories"
+                style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;" text="Liste des Catégories" />
+
+        <Button fx:id="btnAjouterProduit" layoutX="450.0" layoutY="21.0" onAction="#ajouterProduit"
+                style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;" text="Ajouter Produit" />
+    </children>
+</AnchorPane>

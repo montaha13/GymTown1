@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierCategorieController">
+    <children>
+        <Text layoutX="283.0" layoutY="92.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Nos Catégories" />
+        <Label layoutX="100.0" layoutY="127.0" style="-fx-text-fill: #8e44ad;" text="Categorie :" />
+        <TextField fx:id="mid" layoutX="217.0" layoutY="122.0" promptText="Id" />
+        <Label layoutX="100.0" layoutY="127.0" style="-fx-text-fill: #8e44ad;" text="Categorie :" />
+        <TextField fx:id="mcategorie" editable="true" layoutX="217.0" layoutY="122.0" promptText="Categorie" />
+
+    </children>
+    <!-- Bouton Modifier -->
+    <Button fx:id="btnModifier" layoutX="367.0" layoutY="480.0" onAction="#updateCategorie" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;" text="Modifier" />
+    <Button layoutX="136.0" layoutY="480.0" onAction="#annulercategorie" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;" text="Annuler " />
+</AnchorPane>

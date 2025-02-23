@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="446.0" prefWidth="1118.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListeProduitController">
+    <children>
+        <Text layoutX="493.0" layoutY="36.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Liste des Produits" />
+
+
+
+<TableView fx:id="tableView" layoutX="50.0" layoutY="60.0" prefHeight="350.0" prefWidth="1062.0">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="80.0" text="ID" />
+                        <TableColumn fx:id="colNom" prefWidth="150.0" text="Nom" />
+                        <TableColumn fx:id="colDescription" prefWidth="150.0" text="Description" />
+                        <TableColumn fx:id="colRef" prefWidth="150.0" text="Ref" />
+                        <TableColumn fx:id="colPrix" prefWidth="100.0" text="Prix" />
+                        <TableColumn fx:id="colQuantite" prefWidth="100.0" text="Quantité" />
+                        <TableColumn fx:id="colCategorie" prefWidth="150.0" text="Catégorie" />
+                        <TableColumn fx:id="actionColumn" prefWidth="200.0" text="Actions" />
+                    </columns>
+                </TableView>
+        <Button layoutX="32.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleAjouterProduit" text="Ajouter un produit" textFill="#c417c4" />
+        <Button layoutX="200.0" layoutY="15.0" mnemonicParsing="false" onAction="#handlepasserProduit" text="Passer une commande" textFill="#c417c4" />
+        <Button layoutX="994.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleAjouterCategorie" text="Ajouter un categorie" textFill="#c417c4" />
+
+
+
+
+    </children>
+</AnchorPane>

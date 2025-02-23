@@ -40,6 +40,8 @@ public class Commande {
     public Commande(Produit produit, LocalDateTime now, String tunis, String number, String mail, int i, float prix, StatutCommande statutCommande) {
     }
 
+    public Commande(int nombre, String localisation, String telephone, String mail, String date, float prix, float total, String statut) {
+    }
 
 
     // Getters et Setters

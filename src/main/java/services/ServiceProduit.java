@@ -1,134 +1,190 @@
 package services;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import models.Categorie;
 import models.CategorieEnum;
 import models.Produit;
 import tools.MyDataBase;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceProduit implements IService<Produit> {
 
-    Connection cnx;
+    private Connection cnx;
+    private ImageView imageView;
+    private Image image;
+    private FileInputStream fis;
+    private FileChooser fileChooser;
+    private File file;
 
     public ServiceProduit() {
         cnx = MyDataBase.getInstance().getCnx();
     }
 
     @Override
-    public void ajouter(Produit produit) throws SQLException {
-//        String sql="insert into produit(nom,prix,photo,quantite, ref,description,status)" +"values ('"+produit.getNom()+"',"+produit.getPrix()+",'"+produit.getPhoto()+"',"+produit.getQuantite()+", '"+produit.getRef()+"','"+produit.getDescription()+"','"+produit.getStatus()+"')";
-//
-//        Statement st = cnx.createStatement();
-//        st.executeUpdate(sql);
-
-        String sql = "insert into produit(nom,prix,photo,quantite, ref,description,categorie)" + "values (?,?,?,?,?,?,?)";
+    public void ajouter(Produit produit) throws SQLException, IOException {
+        String sql = "INSERT INTO produit(nom, prix, photo, quantite, ref, description, categorie) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ste = cnx.prepareStatement(sql);
+
+        // Remplir les autres paramètres de la requête SQL
         ste.setString(1, produit.getNom());
         ste.setFloat(2, produit.getPrix());
-        ste.setString(3, produit.getPhoto());
+
+        String photoPath = produit.getPhoto(); // Récupérer le chemin de l'image
+        if (photoPath != null && !photoPath.isEmpty()) {
+            // Si le chemin de l'image est valide, on l'ajoute
+            ste.setString(3, photoPath); // Insertion du chemin de l'image dans la base de données
+        } else {
+            // Si aucun fichier photo n'est sélectionné, insérer une valeur par défaut ou NULL
+            ste.setNull(3, java.sql.Types.VARCHAR); // Définit la colonne "photo" comme NULL
+        }
+
+        // Remplir les autres paramètres de la requête
         ste.setInt(4, produit.getQuantite());
         ste.setString(5, produit.getRef());
         ste.setString(6, produit.getDescription());
-        ste.setString(7, produit.getCategorie().getNom());
-        ste.executeUpdate();
-        System.out.println("Produit ajoutée");
+        ste.setString(7, produit.getCategorie().name());
 
+        // Exécution de la mise à jour dans la base de données
+        ste.executeUpdate();
+        System.out.println("Produit ajouté");
     }
 
 
     @Override
     public void supprimer(int id) throws SQLException {
-        String sql = "delete from produit where id=?";
+        String sql = "DELETE FROM produit WHERE id=?";
         PreparedStatement st = cnx.prepareStatement(sql);
         st.setInt(1, id);
         st.executeUpdate();
-        System.out.println("Produit supprimée");
+        System.out.println("Produit supprimé");
     }
 
     @Override
     public void modifier(int id, String nom) throws SQLException {
-        String sql = "Update produit set nom=? where id=?";
-        PreparedStatement st = cnx.prepareStatement(sql);
-        st.setString(1, nom);
-        st.setInt(2, id);
-        st.executeUpdate();
-        System.out.println("Produit Modifiée");
+        // Implémentation éventuelle
     }
 
     @Override
-    public List<Produit> recuperer() throws SQLException {
-        String sql = "select * from produit ";
-        Statement ste = cnx.createStatement();
-        ResultSet rs = ste.executeQuery(sql);
+    public void modifier1(int id, String nom, String description, String ref, String photo, double prix, int quantite, String categorie) throws SQLException {
+        String sql = "UPDATE produit SET nom = ?, description = ?, ref = ?, photo = ?, prix = ?, quantite = ?, categorie = ? WHERE id = ?";
+        try (PreparedStatement st = cnx.prepareStatement(sql)) {
+            st.setString(1, nom);
+            st.setString(2, description);
+            st.setString(3, ref);
 
-        List<Produit> produits = new ArrayList<>();
-        while (rs.next()) {
-            Produit p = new Produit();
-            p.setId(rs.getInt("id"));
-            p.setPhoto(rs.getString("photo"));
-            p.setDescription(rs.getString("description"));
-            p.setNom(rs.getString("nom"));
-            p.setRef(rs.getString("ref"));
-            p.setQuantite(rs.getInt("quantite"));
-            p.setPrix(rs.getFloat("prix"));
-
-            String nomCategorie = rs.getString("categorie"); // Assurez-vous que cette colonne existe bien dans votre table
-
-            try {
-                CategorieEnum categorie = CategorieEnum.fromNom(nomCategorie);
-                p.setCategorie(categorie);
-            } catch (IllegalArgumentException e) {
-                System.err.println("Erreur : Catégorie inconnue - " + nomCategorie);
-                e.printStackTrace(); // Pour voir l'erreur dans la console
+            // Si photo est un chemin de fichier, vous pouvez l'enregistrer directement
+            if (photo != null && !photo.isEmpty()) {
+                st.setString(4, photo); // Mise à jour avec le chemin du fichier
+            } else {
+                st.setNull(4, java.sql.Types.VARCHAR); // Sinon, on met NULL dans la colonne
             }
+
+            st.setDouble(5, prix);
+            st.setInt(6, quantite);
+            st.setString(7, categorie);
+            st.setInt(8, id);
+
+            int rowsUpdated = st.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Produit modifié avec succès !");
+            } else {
+                System.out.println("Aucun produit trouvé avec l'ID donné.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la modification du produit : " + e.getMessage());
+            throw e; // Re-throw SQLException to handle it higher if needed
         }
-        return produits;
     }
 
+    // Implémentation de modifier1 en utilisant l'objet Produit
     @Override
-    public List<Categorie> readAll() throws SQLException {
-        return List.of();
+    public void modifier1(Produit updatedProduit) {
+        try {
+            modifier1(updatedProduit.getId(),
+                    updatedProduit.getNom(),
+                    updatedProduit.getDescription(),
+                    updatedProduit.getRef(),
+                    updatedProduit.getPhoto(),
+                    updatedProduit.getPrix(),
+                    updatedProduit.getQuantite(),
+                    updatedProduit.getCategorie().name());
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la modification du produit : " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-
-    @Override
-    public List<Produit> readAllProduits() {
+    public List<Produit> recuperer() throws SQLException {
         List<Produit> produits = new ArrayList<>();
         String query = "SELECT * FROM produit";
-
-        try (Statement stmt = cnx.createStatement();
+        try (Connection cnx = MyDataBase.getConnection();
+             Statement stmt = cnx.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String photo = rs.getString("photo");
                 String description = rs.getString("description");
                 String nom = rs.getString("nom");
                 String ref = rs.getString("ref");
-                Integer quantite = rs.getInt("quantite");
-                Integer prix = rs.getInt("prix");
-                String categorie = rs.getString("categorie");
-
-
-
-                Produit produit = new Produit(id, photo, description, nom, ref, quantite, prix, categorie);
-
-                produits.add(produit);
-                // Charger les produits associés à la catégorie
-
-                // Création du produit à partir des données de la base
-
-
-                // Ajout du produit à la liste
+                int quantite = rs.getInt("quantite");
+                double prix = rs.getDouble("prix"); // Modifier pour correspondre à la base de données (prix devrait être double)
+                CategorieEnum categorie = null;
+                try {
+                    categorie = CategorieEnum.valueOf(rs.getString("categorie"));
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Valeur de catégorie invalide : " + rs.getString("categorie"));
+                }
+                Produit produit = new Produit(id,  description, ref, nom, photo, (float) prix, quantite,  categorie);
+                System.out.println("Produit récupéré : " + produit);
                 produits.add(produit);
             }
-        } catch (SQLException e) {
-            System.err.println("Erreur lors de la récupération des produits: " + e.getMessage());
         }
         return produits;
     }
 
+
+    @Override
+    public List<Categorie> readAll() throws SQLException {
+        return List.of();
+    }
+
+    public List<Produit> readAll1() throws SQLException {
+        List<Produit> produits = new ArrayList<>();
+        String query = "SELECT * FROM produit";
+        Statement stmt = cnx.createStatement();
+        ResultSet rss = stmt.executeQuery(query);
+
+        while (rss.next()) {
+            int id = rss.getInt("id");
+            String photo = rss.getString("photo");
+            String description = rss.getString("description");
+            String nom = rss.getString("nom");
+            String ref = rss.getString("ref");
+            int quantite = rss.getInt("quantite");
+            float prix = rss.getFloat("prix");
+            String categorie = rss.getString("categorie");
+
+
+
+            if (description == null) description = "Pas de description";
+            if (nom == null) nom = "Nom inconnu";
+            if (ref == null) ref = "Référence inconnue";
+            if (categorie == null) categorie = "Non catégorisé";
+
+            // Créer l'objet Produit avec les données récupérées
+            Produit produit = new Produit(id, photo, description, nom, ref, quantite, (int) prix, categorie);
+            produits.add(produit);
+        }
+
+        return produits;
+    }
 }

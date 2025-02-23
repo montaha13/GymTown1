@@ -76,6 +76,11 @@ public class ServiceCommande implements IService<Commande> {
     }
 
     @Override
+    public void modifier1(int id, String nom, String description, String ref, String photo, double prix, int quantite, String categorie) throws SQLException {
+
+    }
+
+    @Override
     public List<Commande> recuperer() throws SQLException {
         String sql = "SELECT * FROM commande";
         Statement ste = cnx.createStatement();
@@ -114,7 +119,14 @@ public class ServiceCommande implements IService<Commande> {
     }
 
     @Override
-    public List<Produit> readAllProduits() throws SQLException {
+    public List<Produit> readAll1() throws SQLException {
         return List.of();
     }
+
+    @Override
+    public void modifier1(Produit updatedProduit) {
+
+    }
+
+
 }

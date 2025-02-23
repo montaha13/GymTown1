@@ -44,6 +44,20 @@ public class ServiceCategorie implements IService<Categorie> {
         System.out.println("Catégorie supprimée");
     }
 
+    public void modifier(Categorie categorie) throws SQLException {
+        String sql = "UPDATE categorie SET nom = ? WHERE id = ?";
+        try (PreparedStatement st = cnx.prepareStatement(sql)) {
+            st.setString(1, categorie.getNom());
+            st.setInt(2, categorie.getId());
+            st.executeUpdate();
+            System.out.println("Catégorie modifiée avec succès !");
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la modification de la catégorie: " + e.getMessage());
+        }
+    }
+
+
+
     @Override
     public void modifier(int id, String nom) throws SQLException {
         String sql = "Update categorie set nom=? where id=?";
@@ -53,6 +67,13 @@ public class ServiceCategorie implements IService<Categorie> {
         st.executeUpdate();
         System.out.println("Catégorie modifiée");
     }
+
+    @Override
+    public void modifier1(int id, String nom, String description, String ref, String photo, double prix, int quantite, String categorie) throws SQLException {
+
+    }
+
+
 
     public List<Categorie> recuperer() throws SQLException {
         List<Categorie> categories = new ArrayList<>();
@@ -121,8 +142,14 @@ public class ServiceCategorie implements IService<Categorie> {
     }
 
     @Override
-    public List<Produit> readAllProduits() throws SQLException {
+    public List<Produit> readAll1() throws SQLException {
         return List.of();
     }
+
+    @Override
+    public void modifier1(Produit updatedProduit) {
+
+    }
+
 
 }

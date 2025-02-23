@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherCommandeController">
+    <children>
+        <Text layoutX="200.0" layoutY="30.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Liste des Commandes" />
+        <Label layoutX="100.0" layoutY="65.0" style="-fx-text-fill: #8e44ad;" text="Nombre :" />
+        <TextField fx:id="rnombre" layoutX="217.0" layoutY="60.0" promptText="Nombre " />
+        <Label layoutX="100.0" layoutY="105.0" style="-fx-text-fill: #8e44ad;" text="Localisation :" />
+        <TextField fx:id="rlocalisation" layoutX="217.0" layoutY="100.0" promptText="Localisation" />
+        <Label layoutX="104.0" layoutY="185.0" style="-fx-text-fill: #8e44ad;" text="mail :" />
+        <TextField fx:id="rmail" layoutX="217.0" layoutY="140.0" promptText="Mail" />
+        <Label layoutX="103.0" layoutY="144.0" style="-fx-text-fill: #8e44ad;" text="Date :" />
+        <TextField fx:id="rdate" layoutX="217.0" layoutY="180.0" promptText="Date" />
+        <Label layoutX="100.0" layoutY="225.0" style="-fx-text-fill: #8e44ad;" text="Prix:" />
+        <TextField fx:id="rprix" layoutX="217.0" layoutY="220.0" promptText="Prix" />
+        <Label layoutX="100.0" layoutY="265.0" style="-fx-text-fill: #8e44ad;" text="Total :" />
+        <TextField fx:id="rtotal" layoutX="217.0" layoutY="260.0" promptText="Quantite" />
+        <Label layoutX="100.0" layoutY="305.0" style="-fx-text-fill: #8e44ad;" text="Statut :" />
+        <TextField fx:id="rstatut" layoutX="217.0" layoutY="300.0" promptText="Statut" />
+        <Label layoutX="100.0" layoutY="345.0" style="-fx-text-fill: #8e44ad;" text="List :" />
+        <TextField fx:id="rlist" layoutX="18.0" layoutY="382.0" prefHeight="86.0" prefWidth="550.0" promptText="List" />
+
+
+
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.ImageView?>
+<AnchorPane  fx:id="anchorPane" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierProduitController">
+    <children>
+
+
+
+
+        <Text layoutX="200.0" layoutY="10.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Modifier Produit" />
+        <Label layoutX="100.0" layoutY="25.0" style="-fx-text-fill: #8e44ad;" text="Id :" />
+        <TextField fx:id="mid" layoutX="217.0" layoutY="20.0" promptText="Id" />
+        <Label layoutX="100.0" layoutY="65.0" style="-fx-text-fill: #8e44ad;" text="Nom :" />
+        <TextField fx:id="mnom" layoutX="217.0" layoutY="60.0" promptText="Nom " editable="true" />
+        <Label layoutX="100.0" layoutY="105.0" style="-fx-text-fill: #8e44ad;" text="Description :" />
+        <TextField fx:id="mdescription" layoutX="217.0" layoutY="100.0" promptText="Description" editable="true" />
+        <Label layoutX="100.0" layoutY="140.0" style="-fx-text-fill: #8e44ad;" text="Ref :" />
+        <TextField fx:id="mref" layoutX="217.0" layoutY="140.0" promptText="Ref" editable="true" />
+        <Label layoutX="100.0" layoutY="180.0" style="-fx-text-fill: #8e44ad;" text="Photo :" />
+        <TextField fx:id="mphoto" layoutX="217.0" layoutY="180.0" promptText="Lien de la photo" editable="true" />
+
+        <Label layoutX="100.0" layoutY="225.0" style="-fx-text-fill: #8e44ad;" text="Prix:" />
+        <TextField fx:id="mprix" layoutX="217.0" layoutY="220.0" promptText="Prix" editable="true"  />
+        <Label layoutX="100.0" layoutY="265.0" style="-fx-text-fill: #8e44ad;" text="Quantite :"  />
+        <TextField fx:id="mquantite" layoutX="217.0" layoutY="260.0" promptText="Quantite" editable="true"  />
+
+
+        <Label layoutX="100.0" layoutY="305.0" style="-fx-text-fill: #8e44ad;" text="Catégorie :" />
+        <ComboBox fx:id="categorieComboBox" layoutX="217.0" layoutY="300.0" prefWidth="150.0" promptText="Catégorie"  editable="true" style="-fx-background-color: white;  ">
+            <!-- Les éléments de la liste déroulante seront ajoutés via le contrôleur Java -->
+        </ComboBox>
+
+        <Button fx:id="btnBrowser" layoutX="367.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleBrowser" text="Choisir un image" />
+        <ImageView fx:id="imageView" fitHeight="112.0" fitWidth="150.0" layoutX="376.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
+    <!-- Bouton Modifier -->
+    <Button fx:id="btnModifier" layoutX="100.0" layoutY="480.0" text="Modifier"
+            style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;"
+            onAction="#updateProduit" />
+    <Button  layoutX="200.0" layoutY="480.0" text="Annuler"
+            style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;"
+            onAction="#annulerProduit" />
+</AnchorPane>

@@ -62,4 +62,8 @@ public enum CategorieEnum {
         }
         return DYNAMIC_CATEGORIES.containsValue(nom);
     }
+
+    public String getText() {
+        return "";
+    }
 }

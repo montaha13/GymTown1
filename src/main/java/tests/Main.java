@@ -6,6 +6,7 @@ import services.ServiceCommande;
 import services.ServiceProduit;
 
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -76,6 +77,8 @@ public class Main {
             //System.out.println(svc.recuperer());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
