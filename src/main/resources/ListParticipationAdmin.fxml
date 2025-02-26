@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="850.0" styleClass="anchor-pane" stylesheets="@styles/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListParticipationAdmin">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <!-- Titre -->
+        <Text layoutX="291.0" layoutY="71.0" styleClass="title" text="Liste des Participations" />
+
+        <!-- ComboBox pour le statut -->
+        <ComboBox fx:id="statusComboBox" layoutX="23.0" layoutY="139.0" onAction="#handleStatusChange" promptText="Sélectionner un statut" styleClass="combo-box" />
+
+        <!-- TableView -->
+        <TableView fx:id="tableView" layoutX="14.0" layoutY="194.0" prefHeight="500.0" prefWidth="822.0" styleClass="table-view">
+            <columns>
+                <TableColumn fx:id="evenementColumn" prefWidth="150.0" styleClass="table-column" text="Événement" />
+                <TableColumn fx:id="utilisateurColumn" prefWidth="150.0" styleClass="table-column" text="Utilisateur" />
+                <TableColumn fx:id="statutColumn" prefWidth="100.0" styleClass="table-column" text="Statut" />
+                <TableColumn fx:id="placesReserveesColumn" prefWidth="100.0" styleClass="table-column" text="Places Réservées" />
+                <TableColumn fx:id="commentaireColumn" prefWidth="200.0" styleClass="table-column" text="Commentaire" />
+                <TableColumn fx:id="actionColumn" prefWidth="150.0" styleClass="table-column" text="Actions" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

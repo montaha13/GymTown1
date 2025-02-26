@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MyDataBase {
-    public final String url = "jdbc:mysql://localhost:3306/gymtownDB";
+    public final String url = "jdbc:mysql://localhost:3306/gymtowndb";
     public final String user = "root";
     public final String mdp = "";
     private Connection cnx;
@@ -13,11 +13,13 @@ public class MyDataBase {
 
     private MyDataBase() {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             cnx = DriverManager.getConnection(url, user, mdp);
             System.out.println("Connexion établie");
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
         }
+
     }
     public static MyDataBase getInstance() {
         if (myDataBase == null)

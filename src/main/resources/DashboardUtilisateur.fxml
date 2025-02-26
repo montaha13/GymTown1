@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Button?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardUtilisateur">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Text style="-fx-font-size: 26; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Tableau de Bord" />
+
+        <TextField fx:id="searchField" prefWidth="300.0" promptText="Rechercher des événements" style="-fx-border-radius: 5; -fx-background-color: #ffffff; -fx-padding: 10;" />
+        <Button onAction="#handleSearch" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10; -fx-border-radius: 5;" text="Rechercher" />
+
+        <Text style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Événements à Venir" />
+        <ListView fx:id="upcomingEventsListView" prefHeight="200.0" style="-fx-background-color: transparent;">
+            <styleClass>
+                <String fx:value="custom-list-view" />
+            </styleClass>
+        </ListView>
+
+        <Text style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Mes Participations" />
+        <ListView fx:id="myParticipationsListView" prefHeight="200.0" style="-fx-background-color: transparent;">
+            <styleClass>
+                <String fx:value="custom-list-view" />
+            </styleClass>
+        </ListView>
+    </children>
+    <stylesheets>
+        <URL value="@/styles/styles.css" />
+    </stylesheets>
+</VBox>

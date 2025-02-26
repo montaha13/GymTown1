@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterParticipation">
+   <children>
+      <!-- Titre -->
+      <Text text="Participer à l'événement" layoutX="200.0" layoutY="30.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" />
+
+      <!-- Label et champ de texte pour le nombre de places réservées -->
+      <Label text="Nombre de places réservées :" layoutX="50.0" layoutY="80.0" style="-fx-text-fill: #8e44ad;" />
+      <TextField fx:id="nombreDePlacesReserveesField" layoutX="200.0" layoutY="75.0" prefWidth="300.0" promptText="Nombre de places réservées" style="-fx-background-color: #f0f0f0; -fx-border-color: #8e44ad; -fx-border-radius: 5;" />
+
+      <!-- Label et champ de texte pour le commentaire -->
+      <Label text="Commentaire :" layoutX="50.0" layoutY="120.0" style="-fx-text-fill: #8e44ad;" />
+      <TextArea fx:id="commentaireField" layoutX="200.0" layoutY="115.0" prefWidth="300.0" prefHeight="100.0" promptText="Entrez un commentaire" style="-fx-background-color: #f0f0f0; -fx-border-color: #8e44ad; -fx-border-radius: 5;" wrapText="true" />
+
+      <!-- Bouton Participer -->
+      <Button layoutX="250.0" layoutY="240.0" mnemonicParsing="false" onAction="#participer" text="Participer" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5;" />
+   </children>
+</AnchorPane>

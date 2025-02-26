@@ -1,5 +1,8 @@
 package Models;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Evenement {
     private int id;
     private String nom;
@@ -8,22 +11,40 @@ public class Evenement {
     private String description;
     private String dateDebut;
     private String dateFin;
-    private String statut;
+    private double frais;
+    private Statut statut;
+    private int nombreDePlaces; // Nouvel attribut
 
     public Evenement() {
     }
-    // Constructeur
-    public Evenement(String nom, String localisation, String photo,
-                        String description, String dateDebut, String dateFin, String statut) {
-        // this.id = id;
+
+    // Constructeur avec ID
+    public Evenement(int id, String nom, String localisation, String photo, String description, String dateDebut, String dateFin, double frais, Statut statut, int nombreDePlaces) {
+        this.id = id;
         this.nom = nom;
         this.localisation = localisation;
         this.photo = photo;
         this.description = description;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        this.frais = frais;
         this.statut = statut;
+        this.nombreDePlaces = nombreDePlaces;
     }
+
+    // Constructeur sans ID (pour l'ajout)
+    public Evenement(String nom, String localisation, String photo, String description, String dateDebut, String dateFin, double frais, Statut statut, int nombreDePlaces) {
+        this.nom = nom;
+        this.localisation = localisation;
+        this.photo = photo;
+        this.description = description;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.frais = frais;
+        this.statut = statut;
+        this.nombreDePlaces = nombreDePlaces;
+    }
+
     // Getters et setters
     public int getId() {
         return id;
@@ -53,8 +74,16 @@ public class Evenement {
         return dateFin;
     }
 
-    public String getStatut() {
+    public double getFrais() {
+        return frais;
+    }
+
+    public Statut getStatut() {
         return statut;
+    }
+
+    public int getNombreDePlaces() {
+        return nombreDePlaces;
     }
 
     public void setId(int id) {
@@ -85,13 +114,24 @@ public class Evenement {
         this.dateFin = dateFin;
     }
 
-    public void setStatut(String statut) {
+    public void setFrais(double frais) {
+        this.frais = frais;
+    }
+
+    public void setStatut(Statut statut) {
         this.statut = statut;
     }
 
+    public void setNombreDePlaces(int nombreDePlaces) {
+        this.nombreDePlaces = nombreDePlaces;
+    }
+    // Méthode pour la liaison avec JavaFX
+    public StringProperty nomProperty() {
+        return new SimpleStringProperty(nom);
+    }
     @Override
     public String toString() {
-        return "Evénements{" +
+        return "Evenement{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", localisation='" + localisation + '\'' +
@@ -99,7 +139,9 @@ public class Evenement {
                 ", description='" + description + '\'' +
                 ", dateDebut='" + dateDebut + '\'' +
                 ", dateFin='" + dateFin + '\'' +
-                ", statut='" + statut + '\'' +
+                ", frais=" + frais +
+                ", statut=" + statut +
+                ", nombreDePlaces=" + nombreDePlaces +
                 '}';
     }
 }

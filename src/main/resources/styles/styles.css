@@ -1,0 +1,198 @@
+/* ==================== */
+/* Styles généraux */
+/* ==================== */
+
+/* Style de base pour l'AnchorPane */
+.anchor-pane {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Style pour les titres */
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #8e44ad;
+}
+
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #8e44ad;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
+
+.button:hover {
+    -fx-background-color: #732d91;
+}
+
+.button:focused {
+    -fx-border-color: #fffafa;
+    -fx-border-width: 2px;
+}
+
+/* Style pour les ComboBox */
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8e44ad;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+/* ==================== */
+/* Styles pour le TableView */
+/* ==================== */
+
+.table-view {
+    -fx-background-color: #ffffff; /* Fond blanc */
+    -fx-border-color: #e0e0e0; /* Bordure grise claire */
+    -fx-border-width: 1px; /* Épaisseur de la bordure */
+    -fx-border-radius: 5px; /* Coins arrondis */
+    -fx-padding: 0; /* Supprimer le padding */
+}
+
+/* Style pour les en-têtes de colonnes */
+.table-view .column-header {
+    -fx-background-color: #f5f5f5; /* Fond gris très clair */
+    -fx-text-fill: #333333; /* Texte gris foncé */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-border-color: #e0e0e0; /* Bordure grise claire */
+    -fx-border-width: 1px; /* Épaisseur de la bordure */
+}
+
+/* Style pour les cellules */
+.table-view .table-cell {
+    -fx-border-color: #e0e0e0; /* Bordure grise claire */
+    -fx-border-width: 0.5px; /* Épaisseur de la bordure */
+    -fx-padding: 8px; /* Espacement interne */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Style pour les lignes paires */
+.table-row-cell:even {
+    -fx-background-color: #f9f9f9; /* Fond gris très clair */
+}
+
+/* Style pour les lignes impaires */
+.table-row-cell:odd {
+    -fx-background-color: #ffffff; /* Fond blanc */
+}
+
+/* Style pour la ligne sélectionnée */
+.table-row-cell:selected {
+    -fx-background-color: #e0e0e0; /* Fond gris clair */
+    -fx-text-fill: #333333; /* Texte gris foncé */
+}
+
+/* Style pour les bordures des cellules */
+.table-view .table-row-cell {
+    -fx-border-color: #e1a6ff; /* Bordure grise claire */
+    -fx-border-width: 0.5px; /* Épaisseur de la bordure */
+}
+
+/* Supprimer les animations de sélection */
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #e0e0e0; /* Fond gris clair */
+    -fx-text-fill: #333333; /* Texte gris foncé */
+    -fx-background-insets: 0; /* Supprimer les marges internes */
+}
+
+/* Style pour les lignes au survol */
+.table-row-cell:hover {
+    -fx-background-color: #e1a6ff; /* Fond gris très clair au survol */
+}
+
+/* ==================== */
+/* Styles pour les cartes d'événements */
+/* ==================== */
+
+.event-card {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 5);
+}
+
+.event-card:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.event-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-fill: #8e44ad;
+}
+
+.event-details {
+    -fx-font-size: 14px;
+    -fx-fill: #555;
+}
+
+/* ==================== */
+/* Styles pour les alertes et dialogues */
+/* ==================== */
+
+.modern-dialog {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 10px;
+    -fx-padding: 20px;
+    -fx-border-width: 2px;
+    -fx-border-color: #8e44ad;
+}
+
+.modern-dialog .button {
+    -fx-background-color: #8e44ad;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+}
+
+.modern-dialog .button:hover {
+    -fx-background-color: #9b59b6;
+}
+
+.success-alert {
+    -fx-background-color: #d4edda;
+    -fx-border-color: #c3e6cb;
+    -fx-border-radius: 8px;
+}
+
+.error-alert {
+    -fx-background-color: #f8d7da;
+    -fx-border-color: #f5c6cb;
+    -fx-border-radius: 8px;
+}
+
+/* ==================== */
+/* Styles pour les effets et animations */
+/* ==================== */
+
+.star-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: gray;
+    -fx-font-size: 18px;
+    -fx-padding: 0;
+}
+
+.star-button:hover {
+    -fx-text-fill: gold;
+}
+
+/* ==================== */
+/* Styles pour les conteneurs */
+/* ==================== */
+
+.container {
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 8px;
+    -fx-border-color: #8e44ad;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
