@@ -14,7 +14,6 @@
 
 <TableView fx:id="tableView" layoutX="50.0" layoutY="60.0" prefHeight="350.0" prefWidth="1062.0">
                     <columns>
-                        <TableColumn fx:id="colId" prefWidth="80.0" text="ID" />
                         <TableColumn fx:id="colNom" prefWidth="150.0" text="Nom" />
                         <TableColumn fx:id="colDescription" prefWidth="150.0" text="Description" />
                         <TableColumn fx:id="colRef" prefWidth="150.0" text="Ref" />

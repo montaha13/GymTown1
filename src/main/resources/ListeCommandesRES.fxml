@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="446.0" prefWidth="1306.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListeCommandeRESController">
+    <children>
+        <Text layoutX="493.0" layoutY="36.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Liste des Produits" />
+        <ComboBox fx:id="statusComboBox" layoutX="100.0" layoutY="40.0" prefWidth="300.0" />
+
+        <TableView fx:id="tableCommandes" layoutX="20" layoutY="80" prefHeight="400" prefWidth="1379.0">
+            <columns>
+
+                <TableColumn fx:id="colMail" prefWidth="150" text="E-mail" />
+                <TableColumn fx:id="colLocalisation" prefWidth="150" text="Localisation" />
+                <TableColumn fx:id="colTelephone" prefWidth="150" text="Téléphone" />
+                <TableColumn fx:id="colPrix" prefWidth="150" text="Prix" />
+                <TableColumn fx:id="colNombre" prefWidth="150" text="Quantité" />
+                <TableColumn fx:id="colTotal" prefWidth="150" text="Total" />
+                <TableColumn fx:id="colDate" prefWidth="150" text="Date" />
+                <!-- La colonne Statut n'a pas encore de cellFactory -->
+                <TableColumn fx:id="colStatut" prefWidth="150" text="Statut" />
+                <TableColumn fx:id="actionColumn" prefWidth="200.0" text="Actions" />
+
+            </columns>
+        </TableView>
+
+    </children>
+</AnchorPane>

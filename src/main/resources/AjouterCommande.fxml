@@ -9,23 +9,31 @@
 <AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0c3fc); -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterCommandeController">
    <children>
       <Text layoutX="200.0" layoutY="30.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #8e44ad;" text="Passer une commande" />
-      <Label layoutX="100.0" layoutY="65.0" style="-fx-text-fill: #8e44ad;" text="Nombre :" />
-      <TextField fx:id="nombreTF" layoutX="217.0" layoutY="60.0" promptText="Nombre " />
-      <Label layoutX="100.0" layoutY="105.0" style="-fx-text-fill: #8e44ad;" text="Localisation :" />
-      <TextField fx:id="localisationTF" layoutX="217.0" layoutY="100.0" promptText="Localisation" />
-      <Label layoutX="104.0" layoutY="185.0" style="-fx-text-fill: #8e44ad;" text="mail :" />
-      <TextField fx:id="mailTF" layoutX="217.0" layoutY="140.0" promptText="Mail" />
-      <Label layoutX="103.0" layoutY="144.0" style="-fx-text-fill: #8e44ad;" text="Date :" />
-      <TextField fx:id="dateTF" layoutX="217.0" layoutY="180.0" promptText="Date" />
-      <Label layoutX="100.0" layoutY="225.0" style="-fx-text-fill: #8e44ad;" text="Prix:" />
-      <TextField fx:id="prixTF" layoutX="217.0" layoutY="220.0" promptText="Prix" />
-      <Label layoutX="100.0" layoutY="265.0" style="-fx-text-fill: #8e44ad;" text="Total :" />
-      <TextField fx:id="totalTF" layoutX="217.0" layoutY="260.0" promptText="Quantite" />
-      <Label layoutX="100.0" layoutY="305.0" style="-fx-text-fill: #8e44ad;" text="Statut :" />
-      <!-- On laisse ce champ mais il sera rempli par défaut en "en attente" -->
-      <TextField fx:id="statutTF" layoutX="217.0" layoutY="300.0" promptText="Statut" editable="false" text="en attente" />
 
-      <Button layoutX="250.0" layoutY="390.0" mnemonicParsing="false" onAction="#annulerCommande" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;" text="Annuler" />
-      <Button layoutX="344.0" layoutY="390.0" mnemonicParsing="false" onAction="#ajouterCommande" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;" text="Passer" />
+
+
+      <Label layoutX="100.0" layoutY="105.0" style="-fx-text-fill: #8e44ad;" text="Nombre :" />
+      <TextField fx:id="nombreTF" layoutX="218.0" layoutY="101.0" prefHeight="26.0" prefWidth="151.0" promptText="Nombre" />
+      <Button layoutX="190.0" layoutY="99.0" minWidth="30.0" mnemonicParsing="false" onAction="#incrementerNombre" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent; -fx-text-fill: #8e44ad; -fx-font-size: 14;" text="&lt;" />
+      <Button layoutX="366.0" layoutY="99.0" minWidth="30.0" mnemonicParsing="false" onAction="#incrementerNombrePlus" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent; -fx-text-fill: #8e44ad; -fx-font-size: 14;" text="&gt;" />
+
+      <Label layoutX="100.0" layoutY="145.0" style="-fx-text-fill: #8e44ad;" text="Localisation :" />
+      <TextField fx:id="localisationTF" layoutX="217.0" layoutY="140.0" promptText="Localisation" />
+      <Label layoutX="100.0" layoutY="185.0" style="-fx-text-fill: #8e44ad;" text="mail :" />
+      <TextField fx:id="mailTF" layoutX="217.0" layoutY="180.0" promptText="Mail" />
+      <Label layoutX="100.0" layoutY="225.0" style="-fx-text-fill: #8e44ad;" text="Date :" />
+      <TextField fx:id="dateTF" layoutX="217.0" layoutY="220.0" promptText="Date" />
+      <Label layoutX="100.0" layoutY="265.0" style="-fx-text-fill: #8e44ad;" text="Prix:" />
+      <TextField fx:id="prixTF" layoutX="217.0" layoutY="260.0" promptText="Prix" />
+      <Label layoutX="100.0" layoutY="305.0" style="-fx-text-fill: #8e44ad;" text="Total :" />
+      <TextField fx:id="totalTF" layoutX="217.0" layoutY="300.0" promptText="Total" />
+      <Label layoutX="100.0" layoutY="345.0" style="-fx-text-fill: #8e44ad;" text="Télephone :" />
+      <TextField fx:id="telephoneTF" layoutX="217.0" layoutY="340.0" promptText="Télephone" />
+      <Label layoutX="100.0" layoutY="385.0" style="-fx-text-fill: #8e44ad;" text="Statut :" />
+      <TextField fx:id="statutTF" layoutX="217.0" layoutY="380.0" promptText="Statut"  />
+
+
+      <Button layoutX="344.0" layoutY="430.0" mnemonicParsing="false" onAction="#ajouterCommande" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;" text="Passer" />
+
    </children>
 </AnchorPane>

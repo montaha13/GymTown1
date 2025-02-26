@@ -3,9 +3,7 @@ package services;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import models.Categorie;
-import models.CategorieEnum;
-import models.Produit;
+import models.*;
 import tools.MyDataBase;
 
 import java.io.File;
@@ -18,7 +16,7 @@ import java.util.List;
 
 public class ServiceProduit implements IService<Produit> {
 
-    private Connection cnx;
+    private static Connection cnx;
     private ImageView imageView;
     private Image image;
     private FileInputStream fis;
@@ -27,6 +25,30 @@ public class ServiceProduit implements IService<Produit> {
 
     public ServiceProduit() {
         cnx = MyDataBase.getInstance().getCnx();
+    }
+    public static Produit getProduitById(int produiId) throws SQLException {
+        String query = "SELECT * FROM produit WHERE id = ?";
+        try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
+            pstmt.setInt(1, produiId); // Assurez-vous que l'ID est bien passé à la requête
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                // Retourne un produit en utilisant les données de la base
+                return new Produit(
+                        rs.getInt("id"), // ID du produit
+                        rs.getString("photo"),
+                        rs.getString("description"),
+                        rs.getString("nom"),
+                        rs.getString("ref"),
+                        rs.getFloat("prix"), // Prix récupéré en tant que float
+                        rs.getInt("quantite"), // Quantité du produit
+                        CategorieEnum.valueOf(rs.getString("categorie")) // Catégorie récupérée
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la récupération du produit par ID : " + e.getMessage());
+        }
+        return null; // Retourne null si aucun produit n'est trouvé
     }
 
     @Override
@@ -56,6 +78,11 @@ public class ServiceProduit implements IService<Produit> {
         // Exécution de la mise à jour dans la base de données
         ste.executeUpdate();
         System.out.println("Produit ajouté");
+    }
+
+    @Override
+    public List<Commande> readAll2() throws SQLException {
+        return List.of();
     }
 
 
@@ -105,6 +132,11 @@ public class ServiceProduit implements IService<Produit> {
         }
     }
 
+    @Override
+    public void modifier1(Commande updatedCommande) {
+
+    }
+
     // Implémentation de modifier1 en utilisant l'objet Produit
     @Override
     public void modifier1(Produit updatedProduit) {
@@ -121,6 +153,36 @@ public class ServiceProduit implements IService<Produit> {
             System.err.println("Erreur lors de la modification du produit : " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void modifier(int id, Commande updatedCommande) throws SQLException {
+
+    }
+
+    @Override
+    public void modifier(int id, StatutCommande statut) throws SQLException {
+
+    }
+
+    @Override
+    public void modifier(Commande updatedCommmande) {
+
+    }
+
+    @Override
+    public void modifier3(int id, String statut) {
+
+    }
+
+    @Override
+    public void modifierStatut(int id, StatutCommande statut) throws SQLException {
+
+    }
+
+    @Override
+    public void modifier3(Commande updatedCommande) {
+
     }
 
     public List<Produit> recuperer() throws SQLException {
@@ -187,4 +249,8 @@ public class ServiceProduit implements IService<Produit> {
 
         return produits;
     }
+
+
+
+
 }

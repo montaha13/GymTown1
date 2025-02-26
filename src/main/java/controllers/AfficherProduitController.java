@@ -56,9 +56,10 @@ public class AfficherProduitController {
     private ImageView imageView;
     private Image image;
     private FileInputStream fis;
+    private int produitId;
 
     private Produit produit; // Le produit à modifier
-    private int produitId;   // L'ID du produit à modifier
+     // L'ID du produit à modifier
 
     private Stage stage;     // Pour accéder au stage
 
@@ -159,4 +160,35 @@ public class AfficherProduitController {
 
     public void loadProduits() {
     }
+    public void setProduitId(int produitId) {
+        this.produitId = produitId;
+    }
+
+    @FXML
+    private void passerCommande(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de AjouterCommande.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommande.fxml"));
+            Parent root = loader.load();
+
+            // Vérification du contrôleur
+            AjouterCommandeController controller = loader.getController();
+
+            // Passer l'ID du produit au contrôleur AjouterCommandeController
+            controller.setProduitId(this.produitId);  // Assurez-vous que 'produitId' est défini dans AfficherProduitController
+            controller.setPrix(produit.getPrix());  // Passer le prix du produit sélectionné
+
+            // Récupération et mise à jour de la scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Erreur lors du chargement de AjouterCommande.fxml : " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 }

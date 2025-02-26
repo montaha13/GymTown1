@@ -5,7 +5,6 @@ public enum StatutCommande {
     acceptée,
     refusée;
 
-    // Méthode pour obtenir le statut depuis la base de données avec une normalisation
     public static StatutCommande fromString(String status) {
         if (status != null) {
             for (StatutCommande s : StatutCommande.values()) {
@@ -14,6 +13,10 @@ public enum StatutCommande {
                 }
             }
         }
-        return en_attente; // ou tout autre statut par défaut
+        return en_attente; // Statut par défaut si la valeur est inconnue
     }
+
+
+
+
 }

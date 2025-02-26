@@ -1,50 +1,53 @@
 package models;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Commande {
-    private int id;
+    public int produitId;
+    public int produitTF;
 
+    private int id;
+   // private Utilisateur utilisateur;  // Attribut Utilisateur
     private Produit produit;
     private LocalDateTime date;
     private String localisation;
     private String telephone;
     private String mail;
     private int nombre;
-    private float prixUnitaire;
+    private float prix;
     private float total;
     private StatutCommande statut;
 
-    // Constructeur avec paramètres
-    public Commande( Produit produit, int nombre, String localisation,
-                    String telephone, String mail, StatutCommande statut) {
+    public Commande(int commandeId, float v, String text, String text1, String text2, int i, float v1, LocalDateTime parse, StatutCommande statutCommande) {
+    }
 
+    public void setProduitId(int produitId) {
+        System.out.println("ID produit: " + produitId);
+        this.produitId = produitId;
+
+    }
+    // Constructeur avec paramètres (sans utilisateur pour ce cas)
+    public Commande(Produit produit, int nombre, String localisation,
+                    String telephone, String mail, StatutCommande statut) {
         this.produit = produit;
         this.nombre = nombre;
         this.localisation = localisation;
         this.telephone = telephone;
         this.mail = mail;
-        this.date = LocalDateTime.now();
-        this.prixUnitaire = produit.getPrix();
-        this.total = this.nombre * this.prixUnitaire;
+        this.date = LocalDateTime.now();  // Date actuelle
+        this.prix = produit.getPrix();  // Prix du produit
+        this.total = this.nombre * this.prix;  // Total calculé
         this.statut = statut;
     }
 
     // Constructeur par défaut
-    public Commande() {}
-
-    public Commande(Produit p, Date date, String tunis, String number, String mail, int i, float prix, StatutCommande statutCommande) {
+    public Commande() {
     }
 
-    public Commande(Produit produit, LocalDateTime now, String tunis, String number, String mail, int i, float prix, StatutCommande statutCommande) {
-    }
-
-    public Commande(int nombre, String localisation, String telephone, String mail, String date, float prix, float total, String statut) {
-    }
+    // Getter et setter pour Utilisateur
 
 
-    // Getters et Setters
+    // Getters et setters pour les autres attributs
     public int getId() {
         return id;
     }
@@ -53,16 +56,14 @@ public class Commande {
         this.id = id;
     }
 
-
-
     public Produit getProduit() {
         return produit;
     }
 
     public void setProduit(Produit produit) {
         this.produit = produit;
-        this.prixUnitaire = produit.getPrix();
-        this.total = this.nombre * this.prixUnitaire;
+        this.prix = produit.getPrix();
+        calculerTotal();  // Recalcul du total lorsque le produit change
     }
 
     public LocalDateTime getDate() {
@@ -103,29 +104,31 @@ public class Commande {
 
     public void setNombre(int nombre) {
         this.nombre = nombre;
-        this.total = this.nombre * this.prixUnitaire;
+        calculerTotal();  // Recalcul du total lorsque le nombre change
     }
 
-    public float getPrixUnitaire() {
-        return prixUnitaire;
+    public float getPrix() {
+        return prix;
     }
 
-    public void setPrixUnitaire(float prixUnitaire) {
-        this.prixUnitaire = prixUnitaire;
-        this.total = this.nombre * this.prixUnitaire;
+    public void setPrix(float prix) {
+        this.prix = prix;
+        calculerTotal();  // Recalcul du total lorsque le prix unitaire change
     }
 
     public float getTotal() {
         return total;
     }
 
-    public void setTotal(float total) {
-        this.total = total;
+    // Méthode privée pour calculer le total
+    private void calculerTotal() {
+        this.total = this.nombre * this.prix;
     }
 
     public StatutCommande getStatut() {
-        return statut;
+        return (statut != null) ? statut : StatutCommande.en_attente;
     }
+
 
     public void setStatut(StatutCommande statut) {
         this.statut = statut;
@@ -143,9 +146,12 @@ public class Commande {
                 ", telephone='" + telephone + '\'' +
                 ", mail='" + mail + '\'' +
                 ", nombre=" + nombre +
-                ", prixUnitaire=" + prixUnitaire +
+                ", prixUnitaire=" + prix +
                 ", total=" + total +
                 ", statut=" + statut +
                 "}\n";
+    }
+
+    public void setTotal(float total) {
     }
 }

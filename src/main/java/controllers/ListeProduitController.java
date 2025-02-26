@@ -2,6 +2,8 @@ package controllers;
 
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import models.Categorie;
 import models.CategorieEnum;
 import models.Produit;
@@ -55,7 +57,7 @@ public class ListeProduitController {
     @FXML
     public void initialize() throws SQLException {
         // Configure les colonnes
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colRef.setCellValueFactory(new PropertyValueFactory<>("ref"));
@@ -92,11 +94,17 @@ public class ListeProduitController {
 
     private void addActionButtons() {
         actionColumn.setCellFactory(param -> new TableCell<Produit, Void>() {
-            private final Button deleteButton = new Button("Supprimer");
-            private final Button updateButton = new Button("Modifier");
-            private final Button ajouterButton = new Button("Afficher");
+            private final Button deleteButton = new Button();
+            private final Button updateButton = new Button();
+
 
             {
+                // Ajouter une image pour le bouton supprimer
+                ImageView deleteIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/23890710-facile-supprimer-icone-le-icone-pouvez-etre-utilise-pour-sites-internet-impression-modeles-presentation-modeles-illustrations-etc-gratuit-vectoriel-removebg-preview.png")));
+                deleteIcon.setFitWidth(20); // Ajuster la taille
+                deleteIcon.setFitHeight(20);
+                deleteButton.setGraphic(deleteIcon);
+                deleteButton.setStyle("-fx-background-color: transparent;"); // Rendre le fond transparent
                 deleteButton.setOnAction(event -> {
                     Produit produit = getTableView().getItems().get(getIndex());
                     try {
@@ -105,15 +113,16 @@ public class ListeProduitController {
                         throw new RuntimeException(e);
                     }
                 });
-
+                ImageView updateIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/OIP-removebg-preview (1).png")));
+                updateIcon.setFitWidth(20); // Ajuster la taille
+                updateIcon.setFitHeight(20);
+                updateButton.setGraphic(updateIcon);
+                updateButton.setStyle("-fx-background-color: transparent;");
                 updateButton.setOnAction(event -> {
                     Produit produit = getTableView().getItems().get(getIndex());
                     updateProduit(produit, event);
                 });
-                ajouterButton.setOnAction(event -> {
-                    Produit produit = getTableView().getItems().get(getIndex());
-                    ajouterProduit(produit, event);
-                });
+
             }
 
             @Override
@@ -122,7 +131,7 @@ public class ListeProduitController {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    setGraphic(new HBox(deleteButton, updateButton,ajouterButton));
+                    setGraphic(new HBox(deleteButton, updateButton));
                 }
             }
         });

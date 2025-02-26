@@ -5,17 +5,12 @@ import services.ServiceCategorie;
 import services.ServiceCommande;
 import services.ServiceProduit;
 
-
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
-
-
-
 
         // Création des produits
         Produit p = new Produit(
@@ -25,62 +20,49 @@ public class Main {
                 "CE24",
                 4084,
                 75504,
-                CategorieEnum. VETEMENTS_ACCESSOIRES_SPORT
-
+                CategorieEnum.VETEMENTS_ACCESSOIRES_SPORT
         );
 
+        // Création d'une catégorie
         Categorie c = new Categorie("TAPIS");
 
+        // Création d'un produit avec ID défini manuellement (assurez-vous que cela correspond à la logique de votre service)
         Produit produit = new Produit();
         produit.setId(13);  // Assurez-vous de bien initialiser l'ID du produit
 
-        Commande co = new Commande(produit , LocalDateTime.now(), "Tunis", "98765432", "test@mail.com", 2, 100, StatutCommande.en_attente );
-
-        Commande coo = new Commande(
-                p,
-                LocalDateTime.now(),
-                "Tunis",
-                "98765432",
-                "test@mail.com",
-                2,
-                p.getPrix() * 2,
-                StatutCommande.en_attente // Vérifiez la syntaxe exacte pour l'enum
-        );
+        // Création d'une commande
 
 
 
-
-
-
-
-
-
+        // Services pour gérer les entités
         ServiceProduit sv = new ServiceProduit();
         ServiceCategorie sc = new ServiceCategorie();
         ServiceCommande svc = new ServiceCommande();
 
-
         try {
-            sv.ajouter(p);
-            //sv.supprimer(7);
-             //sv.modifier(10, "sac");
-            //sc.ajouter(c);
-            //sc.supprimer(6);
-            //sc.modifier(10, "sac");
-            //svc.ajouter(co);
-            //svc.ajouter(coo);
-            //svc.supprimer(7);
+            // Vous pouvez décommenter ces lignes en fonction de ce que vous souhaitez tester
+            sv.ajouter(p); // Ajouter le produit
+            //sv.supprimer(7); // Supprimer un produit (exemple avec l'ID 7)
+            //sv.modifier(10, "sac"); // Modifier un produit (exemple avec l'ID 10)
 
-            //svc.modifier(10, "sac");
-           System.out.println(sv.recuperer());
-            //System.out.println(sc.recuperer());
-            //System.out.println(svc.recuperer());
+            //sc.ajouter(c); // Ajouter une catégorie
+            //sc.supprimer(6); // Supprimer une catégorie
+            //sc.modifier(10, "sac"); // Modifier une catégorie (exemple avec l'ID 10)
+
+            //svc.ajouter(co); // Ajouter une commande
+            //svc.ajouter(coo); // Ajouter une autre commande
+            //svc.supprimer(7); // Supprimer une commande
+
+            // Récupérer et afficher les produits, catégories, ou commandes
+            System.out.println(sv.recuperer()); // Récupérer les produits
+            //System.out.println(sc.recuperer()); // Récupérer les catégories
+            //System.out.println(svc.recuperer()); // Récupérer les commandes
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erreur SQL : " + e.getMessage());
         } catch (IOException e) {
+            System.out.println("Erreur IO : " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
-
-
 }

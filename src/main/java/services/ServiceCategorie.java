@@ -1,8 +1,6 @@
 package services;
 
-import models.Categorie;
-import models.CategorieEnum;
-import models.Produit;
+import models.*;
 import tools.MyDataBase;
 
 
@@ -32,7 +30,10 @@ public class ServiceCategorie implements IService<Categorie> {
         System.out.println("Catégorie ajoutée et enregistrée dans l'énumération.");
     }
 
-
+    @Override
+    public List<Commande> readAll2() throws SQLException {
+        return List.of();
+    }
 
 
     @Override
@@ -73,6 +74,10 @@ public class ServiceCategorie implements IService<Categorie> {
 
     }
 
+    @Override
+    public void modifier1(Commande updatedCommande) {
+
+    }
 
 
     public List<Categorie> recuperer() throws SQLException {
@@ -117,7 +122,6 @@ public class ServiceCategorie implements IService<Categorie> {
             }
         }
     }
-    @Override
     public List<Categorie> readAll() throws SQLException {
         List<Categorie> categories = new ArrayList<>();
         String query = "SELECT * FROM categorie";
@@ -148,6 +152,36 @@ public class ServiceCategorie implements IService<Categorie> {
 
     @Override
     public void modifier1(Produit updatedProduit) {
+
+    }
+
+    @Override
+    public void modifier(int id, Commande updatedCommande) throws SQLException {
+
+    }
+
+    @Override
+    public void modifier(int id, StatutCommande statut) throws SQLException {
+
+    }
+
+    @Override
+    public void modifier(Commande updatedCommmande) {
+
+    }
+
+    @Override
+    public void modifier3(int id, String statut) {
+
+    }
+
+    @Override
+    public void modifierStatut(int id, StatutCommande statut) throws SQLException {
+
+    }
+
+    @Override
+    public void modifier3(Commande updatedCommande) {
 
     }
 

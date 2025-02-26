@@ -13,7 +13,7 @@
 
         <TableView fx:id="tableView" layoutX="50.0" layoutY="60.0" prefHeight="350.0" prefWidth="430.0">
             <columns>
-                <TableColumn fx:id="colId" prefWidth="80.0" text="ID" />
+            <!--    <TableColumn fx:id="colId" prefWidth="80.0" text="ID" /> -->
                 <TableColumn fx:id="colCategorie" prefWidth="150.0" text="Categorie" />
 
                 <TableColumn fx:id="actionColumn" prefWidth="200.0" text="Actions" />

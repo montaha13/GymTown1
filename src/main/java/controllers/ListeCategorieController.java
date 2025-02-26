@@ -1,6 +1,8 @@
 package controllers;
 
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import models.Categorie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +41,7 @@ public class ListeCategorieController {
     @FXML
     public void initialize() {
         // Configure les colonnes
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+
         colCategorie.setCellValueFactory(new PropertyValueFactory<>("nom"));
 
         // Charger les catégories
@@ -60,20 +62,26 @@ public class ListeCategorieController {
 
     void addActionButtons() {
         actionColumn.setCellFactory(param -> new TableCell<Categorie, Void>() {
-            private final Button deleteButton = new Button("Supprimer");
-            private final Button updateButton = new Button("Modifier");
-            private final Button afficherButton = new Button("Afficher");
+            private final Button deleteButton = new Button();
+            private final Button updateButton = new Button();
 
             {
-                afficherButton.setOnAction(event -> {
-                    Categorie categorie = getTableView().getItems().get(getIndex());
-                    afficherCategorie(categorie);
-                });
+
+                // Ajouter une image pour le bouton supprimer
+                ImageView deleteIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/23890710-facile-supprimer-icone-le-icone-pouvez-etre-utilise-pour-sites-internet-impression-modeles-presentation-modeles-illustrations-etc-gratuit-vectoriel-removebg-preview.png")));
+                deleteIcon.setFitWidth(20); // Ajuster la taille
+                deleteIcon.setFitHeight(20);
+                deleteButton.setGraphic(deleteIcon);
+                deleteButton.setStyle("-fx-background-color: transparent;"); // Rendre le fond transparent
                 deleteButton.setOnAction(event -> {
                     Categorie categorie = getTableView().getItems().get(getIndex());
                     deleteCategorie(categorie);
                 });
-
+                ImageView updateIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/OIP-removebg-preview (1).png")));
+                updateIcon.setFitWidth(20); // Ajuster la taille
+                updateIcon.setFitHeight(20);
+                updateButton.setGraphic(updateIcon);
+                updateButton.setStyle("-fx-background-color: transparent;");
                 updateButton.setOnAction(event -> {
                     Categorie categorie = getTableView().getItems().get(getIndex());
                     updateCategorie(categorie, event);
